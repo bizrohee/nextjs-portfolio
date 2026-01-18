@@ -7,11 +7,11 @@ export default function Page() {
         My Portfolio
       </h1>
       <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
+        {`I'm a 3rd year Electrical Engineering student at California State Polytechnic University, Pomona with a passion for schematic and PCB design, 
+        especially for automotive and vehicular applications. I have hands-on experience designing and routing multi-layer boards for our 
+        Formula SAE EV, including its custom Battery management System and accompanying modules using KiCAD.
+        
+        I am driven by the challenge of creating the robust and efficient electronics that power modern technology.`}
       </p>
       <div className="my-8">
         <BlogPosts />
