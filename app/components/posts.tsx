@@ -8,9 +8,7 @@ export function BlogPosts() {
     <div>
       {allBlogs
         .sort((a, b) => {
-          if (
-            new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)
-          ) {
+          if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
             return -1
           }
           return 1
@@ -19,9 +17,9 @@ export function BlogPosts() {
           <Link
             key={post.slug}
             href={`/projects/${post.slug}`}
-            className="group flex flex-col space-y-1 mb-4 cursor-pointer"
+            className="group mb-6 block rounded-lg py-2 -mx-2 px-2 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-900"
           >
-            <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-2">
+            <div className="w-full flex flex-col md:flex-row md:items-baseline md:space-x-2">
               <p className="text-neutral-600 dark:text-neutral-400 w-[100px] tabular-nums">
                 {formatDate(post.metadata.publishedAt, false)}
               </p>
@@ -34,3 +32,4 @@ export function BlogPosts() {
     </div>
   )
 }
+

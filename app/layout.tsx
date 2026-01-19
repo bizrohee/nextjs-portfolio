@@ -8,33 +8,25 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 //import Footer from './components/footer'
 import { baseUrl } from './sitemap'
 
+// app/layout.tsx
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    default: 'Brendan Birozy',
+    template: '%s | Brendan Birozy',
   },
-  description: 'This is my portfolio.',
+  description: 'Electrical Engineering portfolio and projects.',
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Brendan Birozy',
+    description: 'Electrical Engineering portfolio and projects.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Brendan Birozy',
     locale: 'en_US',
     type: 'website',
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
+  // ...
 }
+
 
 const cx = (...classes) => classes.filter(Boolean).join(' ')
 
