@@ -66,7 +66,7 @@ export default async function Blog({
         </p>
       </div>
 
-      <article className="prose">
+      <article className="prose max-w-none">
         <CustomMDX source={post.content} />
       </article>
     </section>
