@@ -12,8 +12,11 @@ export default function Page() {
         Formula SAE EV, including its custom Battery management System and accompanying modules using KiCAD.
         I am driven by the challenge of creating the robust and efficient electronics that power modern technology.`}
       </p>
-      {`Feel free to browse through my personal projects blow.`}
+    
+      <p className="mb-4">
+        {`Feel free to browse through my personal projects below.`}
       </p>
+
       <div className="my-8">
         <BlogPosts />
       </div>
