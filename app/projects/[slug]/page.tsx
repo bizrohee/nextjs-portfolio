@@ -74,7 +74,7 @@ export default function Blog({ params }) {
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
-            url: `${baseUrl}/projects/${post.slug}`,
+            url: `${baseUrl}/projects/posts/${post.slug}`,
             author: {
               '@type': 'Person',
               name: 'Brendan Birozy',
