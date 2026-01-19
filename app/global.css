@@ -33,6 +33,17 @@ html {
   min-width: 360px;
 }
 
+html {
+  min-width: 360px;
+
+  /* Prevent layout shift when some pages need a scrollbar and others don't */
+  overflow-y: scroll;
+
+  /* Modern browsers reserve gutter even with overlay scrollbars */
+  scrollbar-gutter: stable;
+}
+
+
 .prose .anchor {
   @apply absolute invisible no-underline;
 
@@ -148,3 +159,4 @@ table {
 .title {
   text-wrap: balance;
 }
+
