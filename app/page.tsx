@@ -52,7 +52,9 @@ export default function Page() {
 
       {/* Projects */}
       <h2 className="mb-4 text-xl font-semibold tracking-tighter">Projects</h2>
-
+      <p className="mb-6 text-neutral-700 dark:text-neutral-300"> These are large personal projects I’ve pursued independently or in the context of organizations outside of
+        coursework and school labs, from initial research and design through implementation
+        and testing. </p>
       <div className="my-8">
         <BlogPosts />
       </div>
