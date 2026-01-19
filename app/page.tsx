@@ -49,7 +49,7 @@ export default function Page() {
           </a>
         </div>
       </div>
-
+# Projects
       <div className="my-8">
         <BlogPosts />
       </div>
