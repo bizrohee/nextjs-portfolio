@@ -32,13 +32,6 @@ const ibmPlexSans = IBM_Plex_Sans({
   display: 'swap',
 })
 
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-  variable: '--font-mono',
-})
-
 const cx = (...classes: Array<string | false | null | undefined>) =>
   classes.filter(Boolean).join(' ')
 
