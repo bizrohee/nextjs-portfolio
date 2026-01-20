@@ -1,3 +1,5 @@
+//Example footer template 
+
 /*function ArrowIcon() {
   return (
     <svg
