@@ -41,13 +41,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html
-      lang="en"
-      className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
-        jetbrainsMono.variable
-      )}
-    >
       <body className={cx(ibmPlexSans.className, 'antialiased max-w-xl mx-4 mt-8 lg:mx-auto')}>
         {/* pb-16 adds bottom padding on every page */}
         <main className="flex-auto min-w-0 mt-6 flex flex-col pb-16">
