@@ -102,7 +102,11 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
             })
             setError(String(error))
           }}
+          onLoadProgress={({ loaded, total }) => {
+            console.log(`PDF loading progress: ${loaded}/${total}`)
+          }}
           loading={<div className="p-4">Loading PDF…</div>}
+          noData={<div className="p-4 text-red-500">No PDF data provided</div>}
         >
           <div className="flex flex-col gap-6">
             {Array.from({ length: numPages }, (_, i) => (
