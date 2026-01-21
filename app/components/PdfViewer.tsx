@@ -83,50 +83,54 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   console.log('About to render Document with pdfData, size:', pdfData.byteLength)
   console.log('Worker source:', pdfjs.GlobalWorkerOptions.workerSrc)
   console.log('pdfjs version:', pdfjs.version)
+  console.log('pdfData type:', pdfData.constructor.name)
+  console.log('First 4 bytes:', new Uint8Array(pdfData.slice(0, 4)))
 
   try {
+    console.log('Rendering Document component now...')
     return (
       <div ref={containerRef} className="w-full">
         <Document
           file={{ data: pdfData }}
           onLoadSuccess={({ numPages }) => {
-            console.log('PDF loaded successfully with', numPages, 'pages')
+            console.log('✓ PDF loaded successfully with', numPages, 'pages')
             setNumPages(numPages)
           }}
           onError={(error) => {
-            console.error('Document rendering error:', error)
-            console.error('Error details:', {
-              name: error?.name,
-              message: error?.message,
-              stack: error?.stack,
-            })
-            setError(String(error))
+            console.error('✗ Document error:', error)
+            setError(`Error: ${error}`)
           }}
           onLoadProgress={({ loaded, total }) => {
-            console.log(`PDF loading progress: ${loaded}/${total}`)
+            console.log(`📊 Loading: ${Math.round((loaded / total) * 100)}%`)
           }}
-          loading={<div className="p-4">Loading PDF…</div>}
-          noData={<div className="p-4 text-red-500">No PDF data provided</div>}
+          loading={<div className="p-4 bg-gray-100 rounded">Loading PDF…</div>}
+          noData={<div className="p-4 bg-red-100 text-red-600 rounded">No PDF data</div>}
         >
-          <div className="flex flex-col gap-6">
-            {Array.from({ length: numPages }, (_, i) => (
-              <div key={i} className="w-full">
-                {pageWidth > 0 && (
-                  <Page
-                    pageNumber={i + 1}
-                    width={pageWidth}
-                    renderAnnotationLayer={false}
-                  />
-                )}
-              </div>
-            ))}
-          </div>
+          {numPages > 0 ? (
+            <div className="flex flex-col gap-6">
+              {Array.from({ length: numPages }, (_, i) => (
+                <div key={i} className="w-full">
+                  {pageWidth > 0 && (
+                    <Page
+                      pageNumber={i + 1}
+                      width={pageWidth}
+                      renderAnnotationLayer={false}
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="p-4 bg-yellow-100 text-yellow-800 rounded">
+              Document loaded but waiting for page count...
+            </div>
+          )}
         </Document>
       </div>
     )
   } catch (err) {
-    console.error('Error rendering PDF component:', err)
-    setError(`Rendering error: ${err}`)
-    return <div className="text-red-500 p-4">Error rendering PDF</div>
+    console.error('✗ Exception rendering PDF:', err, err instanceof Error ? err.stack : '')
+    setError(`Exception: ${err}`)
+    return <div className="text-red-500 p-4 bg-red-50 rounded">Error rendering PDF: {String(err)}</div>
   }
 }
