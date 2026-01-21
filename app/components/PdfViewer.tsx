@@ -16,6 +16,7 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   const [numPages, setNumPages] = useState<number>(0)
   const [error, setError] = useState<string | null>(null)
   const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null)
+  const [blobUrl, setBlobUrl] = useState<string | null>(null)
 
   useEffect(() => {
     let isMounted = true
@@ -35,7 +36,12 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
         
         if (isMounted) {
           setPdfData(arrayBuffer)
+          // Create blob URL
+          const blob = new Blob([arrayBuffer], { type: 'application/pdf' })
+          const url = URL.createObjectURL(blob)
+          setBlobUrl(url)
           setError(null)
+          console.log('Blob URL created:', url)
         }
       } catch (err) {
         console.error('Error fetching PDF:', err)
@@ -46,8 +52,12 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
     }
 
     fetchPDF()
+    
     return () => {
       isMounted = false
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl)
+      }
     }
   }, [fileUrl])
 
@@ -76,22 +86,20 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
     return <div className="text-red-500 p-4">Couldn't load PDF: {error}</div>
   }
 
-  if (!pdfData) {
+  if (!blobUrl) {
     return <div className="p-4">Loading PDF…</div>
   }
 
-  console.log('About to render Document with pdfData, size:', pdfData.byteLength)
+  console.log('About to render Document with blobUrl:', blobUrl)
   console.log('Worker source:', pdfjs.GlobalWorkerOptions.workerSrc)
   console.log('pdfjs version:', pdfjs.version)
-  console.log('pdfData type:', pdfData.constructor.name)
-  console.log('First 4 bytes:', new Uint8Array(pdfData.slice(0, 4)))
 
   try {
     console.log('Rendering Document component now...')
     return (
       <div ref={containerRef} className="w-full">
         <Document
-          file={{ data: pdfData }}
+          file={blobUrl}
           onLoadSuccess={({ numPages }) => {
             console.log('✓ PDF loaded successfully with', numPages, 'pages')
             setNumPages(numPages)
