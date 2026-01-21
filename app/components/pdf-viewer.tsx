@@ -29,9 +29,9 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
   }
 
   return (
-    <div className="pdf-viewer-container my-8 border border-gray-300 rounded-lg overflow-hidden">
-      {title && <div className="bg-gray-100 px-4 py-3 font-semibold text-sm">{title}</div>}
-      <div className="pdf-document overflow-auto bg-gray-50">
+    <div className="pdf-viewer-container my-8 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+      {title && <div className="bg-gray-100 dark:bg-gray-800 px-4 py-3 font-semibold text-sm text-gray-900 dark:text-gray-100">{title}</div>}
+      <div className="pdf-document overflow-auto bg-gray-50 dark:bg-gray-900">
         {isLoading && (
           <div className="flex items-center justify-center py-12">
             <p className="text-gray-500">Loading PDF...</p>
@@ -52,7 +52,8 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
             <div key={`page_${index + 1}`} className="mb-4 bg-white shadow-sm">
               <Page
                 pageNumber={index + 1}
-                width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 60, 800) : 800}
+                width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 100, 750) : 750}
+                scale={1}
                 renderTextLayer={true}
                 renderAnnotationLayer={true}
               />
