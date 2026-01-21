@@ -52,7 +52,7 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
             <div key={`page_${index + 1}`} className="mb-4 bg-white shadow-sm">
               <Page
                 pageNumber={index + 1}
-                width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 40, 900) : 900}
+                width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 32, 700) : 700}
                 renderTextLayer={true}
                 renderAnnotationLayer={true}
               />
