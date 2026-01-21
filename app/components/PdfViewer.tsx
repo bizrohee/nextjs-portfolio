@@ -12,6 +12,36 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   const [containerWidth, setContainerWidth] = useState<number>(0)
   const [numPages, setNumPages] = useState<number>(0)
   const [error, setError] = useState<string | null>(null)
+  const [pdfFile, setPdfFile] = useState<any>(null)
+
+  useEffect(() => {
+    // Fetch the PDF file
+    const loadPdf = async () => {
+      try {
+        console.log('Loading PDF from:', fileUrl)
+        const response = await fetch(fileUrl)
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        }
+        const blob = await response.blob()
+        const url = URL.createObjectURL(blob)
+        setPdfFile(url)
+        setError(null)
+        console.log('PDF loaded successfully')
+      } catch (err) {
+        console.error('Error loading PDF:', err)
+        setError(String(err))
+      }
+    }
+
+    loadPdf()
+
+    return () => {
+      if (pdfFile) {
+        URL.revokeObjectURL(pdfFile)
+      }
+    }
+  }, [fileUrl])
 
   useEffect(() => {
     const el = containerRef.current
@@ -35,18 +65,22 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   const pageWidth = Math.min(containerWidth, 800)
 
   const handleError = (error: any) => {
-    console.error('PDF loading error:', error)
-    setError(error?.message || 'Failed to load PDF')
+    console.error('PDF rendering error:', error)
+    setError(error?.message || 'Failed to render PDF')
   }
 
   if (error) {
     return <div className="text-red-500 p-4">Couldn't load PDF: {error}</div>
   }
 
+  if (!pdfFile) {
+    return <div className="p-4">Loading PDF…</div>
+  }
+
   return (
     <div ref={containerRef} className="w-full">
       <Document
-        file={fileUrl}
+        file={pdfFile}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
         onError={handleError}
         loading={<div className="p-4">Loading PDF…</div>}
