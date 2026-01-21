@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
@@ -17,6 +17,20 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
   const [numPages, setNumPages] = useState<number>(0)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [containerWidth, setContainerWidth] = useState<number>(700)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.clientWidth - 24)
+      }
+    }
+
+    updateWidth()
+    window.addEventListener('resize', updateWidth)
+    return () => window.removeEventListener('resize', updateWidth)
+  }, [])
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
     setNumPages(numPages)
@@ -29,7 +43,7 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
   }
 
   return (
-    <div className="pdf-viewer-container my-8 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+    <div className="pdf-viewer-container my-8 border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden" ref={containerRef}>
       {title && <div className="bg-gray-100 dark:bg-gray-800 px-4 py-3 font-semibold text-sm text-gray-900 dark:text-gray-100">{title}</div>}
       <div className="pdf-document overflow-auto bg-gray-50 dark:bg-gray-900">
         {isLoading && (
@@ -52,8 +66,7 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
             <div key={`page_${index + 1}`} className="mb-4 bg-white shadow-sm">
               <Page
                 pageNumber={index + 1}
-                width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 32, 700) : 700}
-                scale={0.98}
+                width={containerWidth}
                 renderTextLayer={true}
                 renderAnnotationLayer={true}
               />
