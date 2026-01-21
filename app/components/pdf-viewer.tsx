@@ -53,6 +53,7 @@ export function PDFViewer({ filePath, title }: PDFViewerProps) {
               <Page
                 pageNumber={index + 1}
                 width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 32, 700) : 700}
+                scale={0.98}
                 renderTextLayer={true}
                 renderAnnotationLayer={true}
               />
