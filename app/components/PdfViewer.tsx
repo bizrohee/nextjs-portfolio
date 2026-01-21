@@ -78,34 +78,47 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
     return <div className="p-4">Loading PDF…</div>
   }
 
-  return (
-    <div ref={containerRef} className="w-full">
-      <Document
-        file={{ data: pdfData }}
-        onLoadSuccess={({ numPages }) => {
-          console.log('PDF loaded successfully with', numPages, 'pages')
-          setNumPages(numPages)
-        }}
-        onError={(error) => {
-          console.error('Document error:', error)
-          setError(String(error))
-        }}
-        loading={<div className="p-4">Loading PDF…</div>}
-      >
-        <div className="flex flex-col gap-6">
-          {Array.from({ length: numPages }, (_, i) => (
-            <div key={i} className="w-full">
-              {pageWidth > 0 && (
-                <Page
-                  pageNumber={i + 1}
-                  width={pageWidth}
-                  renderAnnotationLayer={false}
-                />
-              )}
-            </div>
-          ))}
-        </div>
-      </Document>
-    </div>
-  )
+  console.log('About to render Document with pdfData, size:', pdfData.byteLength)
+
+  try {
+    return (
+      <div ref={containerRef} className="w-full">
+        <Document
+          file={{ data: pdfData }}
+          onLoadSuccess={({ numPages }) => {
+            console.log('PDF loaded successfully with', numPages, 'pages')
+            setNumPages(numPages)
+          }}
+          onError={(error) => {
+            console.error('Document rendering error:', error)
+            console.error('Error details:', {
+              name: error?.name,
+              message: error?.message,
+              stack: error?.stack,
+            })
+            setError(String(error))
+          }}
+          loading={<div className="p-4">Loading PDF…</div>}
+        >
+          <div className="flex flex-col gap-6">
+            {Array.from({ length: numPages }, (_, i) => (
+              <div key={i} className="w-full">
+                {pageWidth > 0 && (
+                  <Page
+                    pageNumber={i + 1}
+                    width={pageWidth}
+                    renderAnnotationLayer={false}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+        </Document>
+      </div>
+    )
+  } catch (err) {
+    console.error('Error rendering PDF component:', err)
+    setError(`Rendering error: ${err}`)
+    return <div className="text-red-500 p-4">Error rendering PDF</div>
+  }
 }
