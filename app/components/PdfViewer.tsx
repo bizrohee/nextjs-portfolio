@@ -6,7 +6,9 @@ import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 
 // Set worker source with CORS support
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdn.jsdelivr.net/npm/pdfjs-dist/build/pdf.worker.min.js`
+if (typeof window !== 'undefined') {
+  pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`
+}
 
 export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   const containerRef = useRef<HTMLDivElement | null>(null)
@@ -79,6 +81,8 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   }
 
   console.log('About to render Document with pdfData, size:', pdfData.byteLength)
+  console.log('Worker source:', pdfjs.GlobalWorkerOptions.workerSrc)
+  console.log('pdfjs version:', pdfjs.version)
 
   try {
     return (
