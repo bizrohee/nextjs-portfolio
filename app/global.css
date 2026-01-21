@@ -160,3 +160,43 @@ table {
   text-wrap: balance;
 }
 
+/* PDF Viewer Styles */
+.pdf-viewer-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+}
+
+.pdf-document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  max-height: 800px;
+}
+
+.react-pdf__Document {
+  width: 100%;
+}
+
+.react-pdf__Page {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.react-pdf__Page__canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.react-pdf__Page__textContent {
+  display: none;
+}
+
+.react-pdf__Page__annotations {
+  position: relative;
+}
+
+
