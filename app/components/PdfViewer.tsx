@@ -11,6 +11,28 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [containerWidth, setContainerWidth] = useState<number>(0)
   const [numPages, setNumPages] = useState<number>(0)
+  const [pdfData, setPdfData] = useState<ArrayBuffer | null>(null)
+  const [error, setError] = useState<boolean>(false)
+
+  useEffect(() => {
+    // Fetch the PDF file as ArrayBuffer
+    const fetchPdf = async () => {
+      try {
+        const response = await fetch(fileUrl)
+        if (!response.ok) {
+          throw new Error(`Failed to fetch PDF: ${response.status}`)
+        }
+        const arrayBuffer = await response.arrayBuffer()
+        setPdfData(arrayBuffer)
+        setError(false)
+      } catch (err) {
+        console.error('Error fetching PDF:', err)
+        setError(true)
+      }
+    }
+
+    fetchPdf()
+  }, [fileUrl])
 
   useEffect(() => {
     const el = containerRef.current
@@ -33,10 +55,14 @@ export default function PdfViewer({ fileUrl }: { fileUrl: string }) {
   // Optional: cap max render width so it doesn't get huge on wide screens
   const pageWidth = Math.min(containerWidth, 800)
 
+  if (error) {
+    return <div className="text-red-500">Couldn't load PDF. Please check the file path.</div>
+  }
+
   return (
     <div ref={containerRef} className="w-full">
       <Document
-        file={fileUrl}
+        file={pdfData}
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
         loading={<div>Loading PDF…</div>}
         error={<div>Couldn’t load PDF.</div>}
