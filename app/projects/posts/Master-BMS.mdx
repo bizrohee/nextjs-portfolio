@@ -20,7 +20,12 @@ It works in tandem with a Distributed BMS board which directly collects cell dat
 
 The Master BMS is a **multipurpose board** to promote simplicity and reduce the number of PCBs on the vehicle.
 
-As such it includes the following core elements:
+The Master BMS's relationship to the Distributed BMS (or Cell Monitor board) is described as follows:
+- Distributed cell monitors collect data and passively balance parallel cell banks
+- Critical HV components and fault monitoring systems are on the Master BMS board
+- Master BMS handles energizing and shutdown of tractive system
+
+The Master BMS contains the following core elements:
 - Precharge circuitry
 - Discharge circuitry
 - ISOSPI communication
@@ -32,6 +37,8 @@ As such it includes the following core elements:
 - High voltage indicator light circuitry
 - Ready to move light circuitry
 - IMD (Insulation Monitoring Device) communication
+
+Communication throughout the Master BMS is handled via a main CAN bus, a secondary CAN bus (in use when charging the tractive battery), and SPI.
 
 Due to the high and low voltage nature of this board, it features galvanic isolation between low and high voltage circuitry, as well as proper creepage and clearances for high voltage signals and components.
 
