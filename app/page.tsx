@@ -9,8 +9,9 @@ export default function Page() {
 
       <p className="mb-4">
         {`I am a 3rd year Electrical Engineering student at California State Polytechnic University, Pomona. I have a passion for schematic and PCB design, and a dedicated focus
-        on automotive and vehicular applications. I have hands-on experience designing and routing multi-layer boards for our 
-        Formula SAE EV, including its custom Battery management System and accompanying modules using KiCAD.`}
+        on automotive and vehicular applications. I have hands-on experience designing and routing multi-layer boards, especially for 
+        automotive and vehicular applications including our 
+        Formula SAE EV and its custom Battery management System and accompanying modules using KiCAD.`}
       </p>
 
       <p className="mb-6">
