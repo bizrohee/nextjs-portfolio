@@ -826,7 +826,7 @@ packages:
   napi-build-utils@2.0.0:
     resolution: {integrity: sha512-GEbrYkbfF7MoNaoh2iGG84Mnf/WZfB0GdGEsM8wz7Expx/LlWf5U8t9nvJKXSp3qr5IsEbK04cBGhol/KwOsWA==}
 
-  next-mdx-remote@4.4.1:
+  next-mdx-remote@6.0.0:
     resolution: {integrity: sha512-1BvyXaIou6xy3XoNF4yaMZUCb6vD2GTAa5ciOa6WoO+gAUTYsb1K4rI/HSC2ogAWLrb/7VSV52skz07vOzmqIQ==}
     engines: {node: '>=14', npm: '>=7'}
     peerDependencies:
@@ -1972,7 +1972,7 @@ snapshots:
   napi-build-utils@2.0.0:
     optional: true
 
-  next-mdx-remote@4.4.1(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
+  next-mdx-remote@6.0.0(react-dom@19.2.3(react@19.2.3))(react@19.2.3):
     dependencies:
       '@mdx-js/mdx': 2.3.0
       '@mdx-js/react': 2.3.0(react@19.2.3)
