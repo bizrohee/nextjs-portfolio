@@ -8,11 +8,16 @@ export default function Page() {
       </h1>
 
       <p className="mb-4">
-        {`I am a 3rd year Electrical Engineering student at California State Polytechnic University, Pomona with a passion for schematic and PCB design. I have hands-on experience designing and routing multi-layer boards including our Formula SAE EV's custom Battery management System and accompanying modules using KiCAD.`}
+        {`I'm a 3rd year Electrical Engineering student at Cal Poly Pomona with hands-on experience in schematic capture, PCB layout,
+        and multi-layer board design. I build reliable, manufacturable hardware solutions, with project experience including the custom Battery Management System, shutdown 
+        circuitry, and other accompanying modules for our Formula SAE EV in EDA environments.
+        
+        I'm motivated by the idea of turning concept into reality and developing reliable, functional, and well-designed hardware. Explore my projects below to see 
+        how I approach real-world hardware challenges.`}
       </p>
 
       <p className="mb-6">
-        Feel free to contact me or browse through my personal projects below.
+        Feel free to contact me through any means below.
       </p>
 
       {/* Contact */}
