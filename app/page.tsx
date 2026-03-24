@@ -10,14 +10,17 @@ export default function Page() {
       <p className="mb-4">
         {`I'm a 3rd year Electrical Engineering student at Cal Poly Pomona with hands-on experience in schematic capture, PCB layout,
         and multi-layer board design. I build reliable, manufacturable hardware solutions, with project experience including the custom Battery Management System, shutdown 
-        circuitry, and other accompanying modules for our Formula SAE EV in EDA environments.
-        
-        I'm motivated by the idea of turning concept into reality and developing reliable, functional, and well-designed hardware. Explore my projects below to see 
-        how I approach real-world hardware challenges.`}
+        circuitry, and other accompanying modules for our Formula SAE EV in EDA environments.`}
       </p>
 
       <p className="mb-6">
-        Feel free to contact me through any means below.
+        I'm motivated by the idea of turning concept into reality and developing reliable, functional, and well-designed hardware. 
+        
+        Explore my projects below to see how I approach real-world hardware challenges, or feel free to contact me through any means below.
+      </p>
+
+      <p className="mb-6">
+        Contact me:
       </p>
 
       {/* Contact */}
