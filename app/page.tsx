@@ -19,9 +19,6 @@ export default function Page() {
         Explore my projects below to see how I approach real-world hardware challenges, or feel free to contact me through any means below.
       </p>
 
-      <p className="mb-6">
-        Contact me:
-      </p>
 
       {/* Contact */}
       <div className="mb-10 rounded-lg border border-neutral-200 dark:border-neutral-800 p-4">
