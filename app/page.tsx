@@ -8,15 +8,15 @@ export default function Page() {
       </h1>
 
       <p className="mb-4">
-        {`I'm a 3rd year Electrical Engineering student at Cal Poly Pomona with hands-on experience in schematic capture, PCB layout,
-        and multi-layer board design. I build reliable, manufacturable hardware solutions, with project experience including the custom Battery Management System, shutdown 
-        circuitry, and other accompanying modules for our Formula SAE EV in EDA environments.`}
+        {`Fourth-year Electrical Engineer at Cal Poly Pomona.`}
       </p>
 
       <p className="mb-6">
-        I'm motivated by the idea of turning concept into reality and developing reliable, functional, and well-designed hardware. 
+        I am driven by the process of turning ideas and concepts into real hardware, and I enjoy working on projects that require both technical problem solving and broader product management strategies.
+ 
+        I value leadership and the ability to connect engineering with business, marketing, and project management. 
         
-        Explore my projects below to see how I approach real-world hardware challenges, or feel free to contact me through any means below.
+        Explore my projects or feel free to contact me through any means  listed below.
       </p>
 
 
