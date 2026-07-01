@@ -4,28 +4,22 @@ publishedAt: '2026-06-24'
 summary: 'Mixed-signal hardware design, FPGA audio capture, embedded Linux, USB audio, external control interface capabilities'
 ---
 
-# Description
+## Description
 Custom two-channel USB audio interface centered around an ALINX AC7Z010 Zynq-7000 system-on-module. Intended as a full mixed-signal hardware and embedded-systems design exercise: analog instrument/line input circuitry, audio ADC clocking, FPGA-based I2S capture, Linux USB Audio Class 2 streaming, display/UI integration, and real-time effects control capabilities.
 
 The first revision targets a self-powered 24-bit / 48 kHz USB Audio Class 2 capture device with an integrated ST7789 display for metering, USB status, sample-rate display, and clipping indication. The core signal path is:
 
-# Architecture
+
+## Architecture
+### In Order:
   - 1/4" TRS input
-    ↓
   - ESD/RF protection
-    ↓
   - Selectable Hi-Z instrument or balanced line input stage
-    ↓
   - OPA1656 ADC driver/filter
-    ↓
   - CS5361 stereo audio ADC
-    ↓
   - 24-bit I2S into Zynq programmable logic
-    ↓
   - Async FIFO / metering / DMA
-    ↓
   - Zynq processing system running Linux UAC2 gadget
-    ↓
   - USB-C USB 2.0 high-speed device connection
 
 
