@@ -16,7 +16,7 @@ export default function Page() {
  
         I value leadership and the ability to connect engineering with business, marketing, and project management. 
         
-        Explore my projects or feel free to contact me through any means  listed below.
+        Explore my projects or feel free to contact me through any means listed below.
       </p>
 
 
