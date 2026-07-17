@@ -34,3 +34,37 @@ Final design will incorporate detachable external effects control surface. The m
 The UART expansion interface is being designed as a low-speed digital control link rather than an audio path. The detachable panel will be powered separately or through a protected auxiliary power pin, with shared ground reference, UART TX/RX, panel-detect, reset, and optional interrupt/status lines. The main carrier will treat the Teensy panel as a removable human-interface device: if the panel is attached, the Zynq software accepts parameter updates from it; if absent, the interface remains fully usable through the onboard display and controls.
 
 The PCB is planned as a four-layer carrier board with a continuous ground plane, separated analog/digital placement domains, local filtering, and test points for critical power, clock, audio, USB, and debug signals. The power architecture is self-powered from an external 12 V DC input, with USB-C VBUS used only for attach/sense rather than as the main board supply for design simplicity. The wiring plan locks the board as a complete AC7Z010 carrier, with external 12 V input, clean analog rails, digital rails, USB PHY support, display support, and JTAG.
+
+...
+...
+
+## Progress Captures as of 7/17
+
+All designs are preliminary previews.
+
+Audio Channel:
+
+<Image
+  src= "images/audio-interface/AudioChannel.png
+  alt="Audio Channel"
+  width={1200}
+  height={675}
+/>
+
+Power Tree Architecture:
+
+<Image
+  src="images/audio-interface/PowerTree.png" 
+  alt="Power Tree Architecture"
+  width={1200}
+  height={675}
+/>
+
+FPGA SoC Interface:
+
+<Image
+  src="images/audio-interface/BoardInterface.png" 
+  alt="Interface"
+  width={1200}
+  height={675}
+/>
