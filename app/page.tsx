@@ -14,7 +14,7 @@ export default function Page() {
       <p className="mb-6">
         I am driven by the process of turning ideas and concepts into real hardware, and I enjoy working on projects that require both technical problem solving and broader product management strategies.
  
-        I value leadership and the ability to connect engineering with business, marketing, and project management. 
+        I strive to connect engineering and technical expertise with leadership, management, and other aspects of business and marketing. 
         
         Explore my projects or feel free to contact me through any means listed below.
       </p>
@@ -55,9 +55,8 @@ export default function Page() {
       {/* Projects */}
       <h2 className="mb-4 text-xl font-semibold tracking-tighter">Projects</h2>
       <p className="mb-6 text-neutral-700 dark:text-neutral-300">
-        These are large personal projects I’ve pursued independently or in the
-        context of organizations outside of coursework and school labs, from
-        initial research and design through implementation and testing.
+        These are large personal projects I’ve pursued independently or in the context of organizations outside of
+        coursework, school labs, and work/internship projects, from initial research and design through bringup, testing, and interating.
       </p>
 
       <div className="my-8">
