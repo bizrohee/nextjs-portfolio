@@ -11,8 +11,7 @@ export default function Page() {
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Projects</h1>
       <p className="mb-4">
         {`These are large personal projects I’ve pursued independently or in the context of organizations outside of
-        coursework and school labs, from initial research and design through implementation
-        and testing.`}
+        coursework, school labs, and work/internship projects, from initial research and design through bringup, testing, and interating.`}
       </p>
       <BlogPosts />
     </section>
